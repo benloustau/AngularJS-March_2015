@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="index.js"></script>
+  <title>Lesson02</title>
+
+  <style type="text/css">
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .green {
+      color: green;
+    }
+  </style>
+</head>
+  <body ng-app="myApp">
+  <h3>Lesson02 - Angular Built-In Direcitves</h3>
+
+  <div ng-controller="myController as ctrl">
+
+
+      <div ng-repeat="book in ctrl.books">
+          <input type="radio" name="bookSel" ng-value="book.name" ng-model="ctrl.selectedBook">  <span ng-bind="book.name"></span>
+      </div>
+      <span ng-bind="ctrl.selectedBook"></span>
+      <br>
+      <br>
+      <br>
+      <div ng-repeat="str in ctrl.simpleArray">
+        This is String <span ng-bind="$index"> </span><span ng-bind="str"></span>
+      </div>
+      <br>
+      <div ng-repeat="myObj in ctrl.objectArray">
+        <span ng-bind="myObj.name"></span>
+      </div>
+      <br>
+      <div ng-repeat="(key, value) in ctrl.objectToRepeat">
+        <span ng-bind="$index + 1"></span>.  <span ng-bind="key"></span> Will Start on <span ng-bind="value.start"></span> and end on <span ng-bind="value.end"></span>
+      </div>
+
+
+      <br>
+      <input type="text" ng-model="ctrl.radioSelection.start">
+      <span ng-bind="ctrl.myName.name"></span>
+
+      <br>
+      <input type="checkbox" ng-model="ctrl.isOn"> Is On
+      <span ng-bind="ctrl.isOn"></span>
+
+      <br>
+      <input type="radio" 
+            ng-value="ctrl.objectToRepeat.Summer" 
+            name="selection" 
+            ng-model="ctrl.radioSelection"> Option 1
+      <input type="radio" 
+            ng-value="ctrl.objectToRepeat.Winter" 
+            name="selection" 
+            ng-model="ctrl.radioSelection"> Option 2
+     <!--  <input type="radio" 
+            ng-value="ctrl.objectToRepeat.Summer" 
+            name="selection" 
+            ng-model="ctrl.radioSelection"> Option 3 -->
+
+      <span ng-bind="ctrl.radioSelection.start"></span>
+
+  
+      <br>
+      <br>
+      <br>
+      <input type="checkbox" ng-model="ctrl.shouldShow">Show
+      <div ng-if="ctrl.shouldShow">
+        <!-- <span ng-bind="ctrl.myName"></span> -->
+
+        <input type="text" ng-init="ctrl.myName = 'Joe'" ng-model="ctrl.myName">
+      </div>
+
+
+      <button ng-click="ctrl.onClickAction(ctrl.myName)">Click</button>
+
+
+      <br>
+      <br>
+      <br>
+
+      <input type="checkbox" ng-model="ctrl.isClassOn">On
+      <div ng-class="{'red': ctrl.isClassOn}">
+          This should change to red
+      </div>
+      <div ng-class="{'green': ctrl.isClassOn}">
+          This should change to green
+      </div>
+
+
+      <input type="text" ng-model="ctrl.className">
+      <div ng-class="ctrl.className">
+          This should change to red
+      </div>
+
+      <input type="checkbox" ng-model="ctrl.toggleClass">Toggle
+      <div ng-class="ctrl.toggleClass ? 'red' : 'green'" >
+          This should change to between red and greeen
+      </div>
+
+      <br>
+      <br>
+      <br>
+
+  </div>
+  </body>
+</html>
+
+
