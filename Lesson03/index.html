@@ -37,7 +37,25 @@
         Last Name: <span ng-bind="ctrl.selectedWorker.lname"></span>
       </div>
       <br><br>
+  
+      <input type="text" ng-model="ctrl.friendName"><button ng-click="ctrl.addFriend()">Add</button>
 
+      <div ng-repeat="friend in ctrl.user.friends">
+          <span ng-bind="friend.name"></span><button ng-click="ctrl.removeFriend(friend)">Remove</button>
+      </div>
+
+      <div>Total Modifications: <span ng-bind="ctrl.totalMods"></span>
+
+      <br><br>
+      <div>
+        Username:<input type="text" ng-model="ctrl.user.username">
+      </div>
+      <div>
+        Password:<input type="text" ng-model="ctrl.user.password">
+      </div>
+
+
+      <br><br>
       <div ng-hide="ctrl.isEditing">
         <div>
           First: <span ng-bind="ctrl.person.fname"></span>

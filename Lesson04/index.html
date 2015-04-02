@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="index.js"></script>
+  <title>Lesson04 - Custom Services</title>
+
+</head>
+  <body ng-app="Lesson04">
+  <h3>Lesson04 - Custom Services</h3>
+
+  <div ng-controller="myController as ctrl">
+    
+    <div ng-repeat="folder in ctrl.folders">
+      <span ng-bind="folder.name"></span>
+      <div style="padding-left: 20px" ng-repeat="item in folder.items">
+        <span ng-bind="item.itemName"></span>
+      </div>
+    </div>
+
+    <div ng-bind="ctrl.currentUser.firstname"></div>
+    <div ng-bind="ctrl.currentUser.lastname"></div>
+
+    <button ng-click="ctrl.onClick()">Click</button>
+
+  </div>
+  </body>
+</html>
+
+
