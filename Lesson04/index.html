@@ -10,6 +10,10 @@
   <h3>Lesson04 - Custom Services</h3>
 
   <div ng-controller="myController as ctrl">
+
+    Sum equals: <span ng-bind="ctrl.sum"></span>
+
+    <br><br>
     
     <div ng-repeat="folder in ctrl.folders">
       <span ng-bind="folder.name"></span>
@@ -18,9 +22,49 @@
       </div>
     </div>
 
-    <div ng-bind="ctrl.currentUser.firstname"></div>
-    <div ng-bind="ctrl.currentUser.lastname"></div>
+    <br><br>
+    <div> Person 1</div>
+    <div ng-bind="ctrl.person1.firstname"></div>
+    <div ng-bind="ctrl.person1.lastname"></div>
+    <div ng-bind="ctrl.person1.yearOfBirth"></div>
+    Age: <div ng-bind="ctrl.person1.age"></div>
+    <input type="number" ng-model="ctrl.year1" ng-change="ctrl.person1.setYearOfBirth(ctrl.year1)">
+    <br><br>
 
+    <div> Person 2</div>
+    
+    <div ng-bind="ctrl.person2.firstname"></div>
+    <div ng-bind="ctrl.person2.lastname"></div>
+    <div ng-bind="ctrl.person2.yearOfBirth"></div>
+    Age: <div ng-bind="ctrl.person2.age"></div>
+    <input type="number" ng-model="ctrl.year2" ng-change="ctrl.person2.setYearOfBirth(ctrl.year2)">
+    <br><br>
+
+    <div ng-bind="ctrl.person3.firstname"></div>
+    <div ng-bind="ctrl.person3.lastname"></div>
+    <div ng-bind="ctrl.person3.yearOfBirth"></div>
+    Age: <div ng-bind="ctrl.person3.age"></div>
+    <input type="number" ng-model="ctrl.year3" ng-change="ctrl.person3.setYearOfBirth(ctrl.year3)">
+    <br><br>
+
+    <input type="radio" ng-model="ctrl.select" name="chc" ng-value="ctrl.jobs.employee" ng-change="ctrl.userSelection.setSelection(ctrl.select)">Employee
+    <input type="radio" ng-model="ctrl.select" name="chc" ng-value="ctrl.jobs.ceo" ng-change="ctrl.userSelection.setSelection(ctrl.select)">CEO
+    <input type="radio" 
+          ng-model="ctrl.select" 
+          name="chc" 
+          ng-value="ctrl.jobs.founder" 
+          ng-change="ctrl.userSelection.setSelection(ctrl.select)">Founder
+    <br><br>
+
+    <div>
+      First Name: <span ng-bind="ctrl.userSelection.selectedWorker.fname"></span>
+    </div>
+    <div>
+      Last Name: <span ng-bind="ctrl.userSelection.selectedWorker.lname"></span>
+    </div>
+
+
+    <br><br>
     <button ng-click="ctrl.onClick()">Click</button>
 
   </div>
