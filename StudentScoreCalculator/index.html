@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="services.js"></script>
+  <script src="index.js"></script>
+  <title>Lesson04 - Angular Custom Services</title>
+</head>
+
+<body ng-app="Lesson04">
+	<div ng-controller="MyController as ctrl">
+		<h3>Student Scores Calculator</h3>
+		<div>
+			<div>Student Name</div>
+			<input type="text" ng-model="ctrl.currentStudent.name"> 
+		</div>
+		
+
+		<br>
+		<div>Add Assignment Score</div>
+		<div>Name: <input type="text" ng-model="ctrl.assignmentName"></div>
+		<div>Score: <input type="number" ng-model="ctrl.assignmentScore"></div>
+		<button ng-click="ctrl.addAssignment()">Add Assignment</button>
+
+		<br><br>
+		<div style="width: 40%; float:left;">
+			<div>Current Scores</div>
+			<div ng-repeat="assignment in ctrl.currentStudent.scores">
+				Assignment <span ng-bind="assignment.name"></span>
+				Score: <span ng-bind="assignment.score"></span>
+			</div>
+		</div>
+		<div style="width: 40%; float:left">
+			<div>Student Statistics</div>
+			<div>Average: <span ng-bind="ctrl.currentStudent.average"></span></div>
+			<div>Grade: <span ng-bind="ctrl.currentStudent.grade"></span></div>
+			<div>Passing: <span ng-bind="ctrl.currentStudent.passing"></div>
+		</div>
+	</div>
+</body>
+</html>
