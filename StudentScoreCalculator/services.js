@@ -60,6 +60,8 @@ angular.module('MyServies', [])
 		return sum/assignments.length;
 	}
 
+	
+
 	this.getGrade = function(average) {
 		if (average >= 90) {
 			return GRADE_MAPPER.A.grade;

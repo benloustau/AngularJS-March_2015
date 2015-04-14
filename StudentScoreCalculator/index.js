@@ -1,6 +1,5 @@
 angular.module('Lesson04', ['MyServies'])
 
-
 .controller('MyController', function(StudentScoreDTO, AssignmentDTO) {
 	var self = this;
 	self.currentStudent = new StudentScoreDTO();

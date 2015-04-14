@@ -1,0 +1,52 @@
+function Car(name) {this.name = name}
+var myVar = Car('Ford');
+myVar
+=> undefined
+
+function calcAvg() {var a = 1+1;}
+
+function Car(name) {this.name = name; return this.name}
+var myVar = Car('Ford');
+myVar
+=>"Ford"
+
+function Car(name) {this.name = name}
+var myCar = new Car("Honda");
+myCar
+=>Car {name: "Honda"}
+
+var myVar = {name: "honda"}
+myVar
+=>Object {name: "honda"}
+
+Car.prototype.setModel = function(model){this.model = model};
+
+var myCar = new Car("Honda");
+myCar
+=>Car {name: "Honda", setModel: function}
+
+var yourCar = new Car("Honda");
+yourCar
+=>Car {name: "Honda", setModel: function}
+
+myCar.setModel("Accord")
+myCar
+=>Car {name: "Honda", model: "Accord", setModel: function}
+
+yourCar
+=>Car {name: "Honda", setModel: function}
+
+yourCar.setModel("Civic");
+yourCar
+=>Car {name: "Honda", model: "Civic", setModel: function}
+
+Car.buildDefaultAmericanCar = function() {
+    var americanCar = new Car("Ford");
+    americanCar.setModel("Mustang");
+    
+    return americanCar;
+}
+var myDefAmCar = Car.buildDefaultAmericanCar();
+
+myDefAmCar
+=>Car {name: "Ford", model: "Mustang", setModel: function}
