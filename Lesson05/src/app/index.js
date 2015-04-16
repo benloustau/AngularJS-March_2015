@@ -6,8 +6,8 @@ angular.module('gulpTemplate', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'app/main/main.html'
+        // controller: 'MainCtrl'
       });
 
     $urlRouterProvider.otherwise('/');
