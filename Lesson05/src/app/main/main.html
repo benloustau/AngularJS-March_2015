@@ -9,9 +9,26 @@
 <div gd-contact-card></div>
 
 <br><br><br>
-<div gd-contact-card></div>
+<div gd-background-change></div>
 
-<br><br><br>
-<div gd-contact-card></div>
+<!-- <div ng-repeat="person in ctrl.persons">
+  <div gd-person-display></div>
+</div> -->
+
+<!--   <div gd-person-value 
+      first-name="{{ctrl.person1.fname}}"
+      last-name="Dagher"></div> -->
+
+<!-- <div ng-repeat="person in ctrl.persons">
+  <div gd-person-value 
+      first-name="{{person.fname}}"
+      last-name="{{person.lname}} is Cool"></div>
+</div> -->
+
+<div ng-repeat="personObject in ctrl.persons">
+  <div gd-person-reference
+      person="personObject"
+      on-remove="ctrl.removePerson(personToRemove)"></div>
+</div>
 
 </div>
