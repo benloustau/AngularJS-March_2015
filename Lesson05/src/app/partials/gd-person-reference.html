@@ -1,5 +1,5 @@
 <div style="width: 250px; height: 100px">
-  <div> First Name: <span ng-bind="person.fname"> </span></div>
-  <div> Last Name:  <span ng-bind="person.lname"> </span></div>
-  <button ng-click="onRemove({personToRemove: person})">Remove</button>
+  <div> First Name: <span ng-bind="ctrl.person.fname"> </span></div>
+  <div> Last Name:  <span ng-bind="ctrl.person.lname"> </span></div>
+  <button ng-click="ctrl.onRemove({personToRemove: ctrl.person})">Remove</button>
 </div>

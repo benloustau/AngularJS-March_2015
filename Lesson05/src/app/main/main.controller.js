@@ -18,7 +18,13 @@ angular.module('gulpTemplate')
 .directive ('gdBackgroundChange', function() {
   return {
     templateUrl: 'app/partials/gd-background-change.html',
-    controller: 'GDBackgroundChangeCtrl as bgCtrl'
+    controller: 'GDBackgroundChangeCtrl',
+    controllerAs: 'bgCtrl',
+    link: function (scope, element) {
+    	scope.onFade = function() {
+    		$(element).animate({opacity:'0.0'}, 800);
+    	}
+    }
   };
 })
   
@@ -51,11 +57,28 @@ angular.module('gulpTemplate')
       person: '=',
       onRemove: '&'
     },
-    controller:'PCtrl'
+    controller:'PCtrl as ctrl',
+    bindToController: true
   };
 })
-.controller('PCtrl', function($scope) {
-  
+.controller('PCtrl', function() {
+
+})
+
+.directive('gdPersonNameSpace', function() {
+	return {
+		templateUrl: 'app/partials/gd-person-name-space.html',
+		scope: {
+			person: '=gdPersonNameSpace'
+		}
+	}
+})
+
+.directive('gdTranscludeExample', function() { 
+	return {
+		templateUrl: 'app/partials/gd-transclude-example.html',
+		transclude: true
+	}
 })
 
 .controller('MainCtrl', function() {
@@ -82,10 +105,4 @@ angular.module('gulpTemplate')
   }
 
   self.persons = [self.person1, self.person2, self.person3];
-})
-
-
-
-
-
-;
+});

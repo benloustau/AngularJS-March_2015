@@ -9,7 +9,14 @@
 <div gd-contact-card></div>
 
 <br><br><br>
-<div gd-background-change></div>
+
+<div gd-background-change>
+</div>
+
+<div gd-transclude-example> 
+	Some stuff <button> PressMe </button>  
+</div>
+<br><br>
 
 <!-- <div ng-repeat="person in ctrl.persons">
   <div gd-person-display></div>
@@ -24,6 +31,8 @@
       first-name="{{person.fname}}"
       last-name="{{person.lname}} is Cool"></div>
 </div> -->
+
+<div gd-person-name-space="ctrl.person1"></div>
 
 <div ng-repeat="personObject in ctrl.persons">
   <div gd-person-reference
