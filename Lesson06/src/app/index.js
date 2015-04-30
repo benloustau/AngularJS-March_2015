@@ -27,6 +27,23 @@ angular.module('gulpTemplate', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize
   			controller: 'StuffWeSellCtrl'
   		}
   	},
+  	kStateStuffWeSellContent: {
+  		stateName: 'stuffWeSell.content',
+  		url: '/stuff-we-sell',
+  		stateDefintion: {
+  			views: {
+  				topSection: {
+  					templateUrl: 'app/stuff-we-sell/top-section.html'
+  				},
+  				sideBar: {
+  					templateUrl: 'app/stuff-we-sell/sideBar.html'
+  				}, 
+  				mainContent: {
+  					templateUrl: 'app/stuff-we-sell/mainContent.html'
+  				}
+  			}
+  		}
+  	},
   	kStateCEOBio: {
   		stateName:'aboutUs.ceoBio',
   		stateDefintion: {
@@ -58,7 +75,8 @@ angular.module('gulpTemplate', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize
 	.state(APP_STATE.kStateStuffWeSell.stateName, APP_STATE.kStateStuffWeSell.stateDefintion)
     .state(APP_STATE.kStateCEOBio.stateName, APP_STATE.kStateCEOBio.stateDefintion)
     .state(APP_STATE.kStatePresidentBio.stateName, APP_STATE.kStatePresidentBio.stateDefintion)
-    .state(APP_STATE.kStateFounderBio.stateName, APP_STATE.kStateFounderBio.stateDefintion);
+    .state(APP_STATE.kStateFounderBio.stateName, APP_STATE.kStateFounderBio.stateDefintion)
+    .state(APP_STATE.kStateStuffWeSellContent.stateName, APP_STATE.kStateStuffWeSellContent.stateDefintion);
 
 
     $urlRouterProvider.otherwise('/');
