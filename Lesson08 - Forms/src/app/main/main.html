@@ -9,14 +9,55 @@
   <div class="row">
   	<form name="ctrl.signUpForm" ng-submit="ctrl.submitForm()" novalidate>
 
-  	<input type="text" name="firstNameInput" placeholder="First Name" required ng-model="ctrl.firstName">
+  	<input type="text" ng-change="ctrl.logFname(ctrl.firstName)" name="firstNameInput" placeholder="First Name" ng-required="ctrl.isFirstNameRequired" ng-model="ctrl.firstName">
 
-  	<input type="email" name="emailNameInput" placeholder="Email" required ng-model="ctrl.email">
-  		
+  	<input type="email" name="emailInput" placeholder="Email" required ng-model="ctrl.email">
+
+	<br>
+  	<input type="text" 
+  			ng-init="ctrl.phone = '(123) 234-2342'"
+  			name="phoneInput" 
+  			placeholder="Phone"
+  			ng-pattern="/^\(\d\d\d\) ?\d\d\d-\d\d\d\d$/"
+  			ng-model="ctrl.phone">(###) ###-#####
+
+	<br>
+
 	
-	<input type="submit" value="Submit Yo" class="btn btn-primary">
+	<input type="submit" ng-disabled="ctrl.signUpForm.$invalid" value="Submit Yo" class="btn btn-primary">
+
+
+	<br>
+	<br>
+	<br>
+	Select Person
+<!-- 	SimpleArray
+	<select
+			ng-options="person for person in ctrl.selectOptions" 
+			ng-model="ctrl.userSelection">
+	</select> -->
+
+<!-- 	STATES
+
+	<select ng-options="state.abbr as state.displayName for state in ctrl.selectOptions" 
+			ng-model="ctrl.userSelection">
+	</select> -->
+
+
+<!-- STATE_OBJECTS -->
+	<select ng-options="valueProp.abbr as valueProp.displayName for (keyProp, valueProp) in ctrl.selectOptions" 
+			ng-model="ctrl.userSelection">
+	</select>
+
+
   	</form>
   </div>
+
+    <div class="row">
+  	<pre>
+  		{{ ctrl.userSelection | json }}		
+  	</pre>
+    </div>
 
   <div class="row">
 	<pre>
