@@ -1,19 +1,62 @@
 'use strict';
 
 angular.module('lesson10')
-  .controller('MainCtrl', function ($scope, $q, VAL) {
+  .controller('MainCtrl', function ($scope, $q, VAL, UserResource, UserFriendsResource, MapsAPIResource) {
     $scope.awesomeThings = VAL;
 
     var self = this;
 
     self.promise = undefined;
 
+    // UserResource.getUsers({}, function onSuccess(response) {
+    // 	self.users = response;
+    // }, function onError(error) {
+    // 	// error handling function
+    // });
+
+	UserResource.getUsers({}).$promise
+	.then(function onSuccess(response) {
+		self.users = response;
+	}, function onError(error) {
+		// error handling function
+	});
+
+
+	self.getFriendForUser = function(user) {
+		UserFriendsResource.getFriends({
+			userId: user._id
+		}).$promise
+		.then(function (response) {
+			user.friends = response;
+		}, function (error) {
+			// TODO: handle error
+		})
+
+
+		// UserFriendsResource.getFriends({
+		// 	userId: user._id
+		// }, function (response) {
+		// 	user.friends = response;
+		// }, function (error) {
+		// 	// TODO: handle error
+		// })
+	}
+
+	self.updateAddress = function() {
+		MapsAPIResource.getAddress({
+			address: self.info.address
+		}).$promise
+		.then(function(response) {
+			self.addresses = response.results;
+		})
+	}
+
     self.showModal = function() {
-    	self.deffered = $q.defer();
+    	self.defferedObject = $q.defer();
     	$('#myModal').css("display", "block").animate({opacity: 1.0}, 500);
     	$('#background').css("display", "block").animate({opacity: .60}, 500);
     
-    	self.deffered.promise
+    	self.defferedObject.promise
     	.then(function onConfirm() {
     		$('#myModal').animate({opacity: 0.0}, 500, function() {
     			$(this).css("display", "none");
@@ -26,6 +69,35 @@ angular.module('lesson10')
     	});
 
     };
+  })
+
+  .factory('UserResource', function($resource) {
+  	return $resource('app/json/sampleData.json', {}, {
+  		getUsers: {
+  			method: 'GET',
+  			isArray: true
+  		}
+  	})
+  })
+
+  .factory('UserFriendsResource', function($resource) {
+  	return $resource('app/json/:userId/profile.json', {
+  		userId: '@userId'
+  	}, {
+  		getFriends: {
+  			method: 'GET',
+  			isArray: true
+  		}
+  	})
+  })
+
+  .factory('MapsAPIResource', function($resource) {
+  	return $resource('http://maps.googleapis.com/maps/api/geocode/json', {}, {
+  		getAddress: {
+  			method: 'GET',
+  			isArray: false
+  		}
+  	})
   })
 
   .directive('gdModalDisplay', function() { 
