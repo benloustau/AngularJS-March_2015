@@ -1,0 +1,32 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+}
+
+.thumbnail img.pull-right {
+  width: 50px;
+}
+
+.item {
+	transition: 1.5s ease-in all;
+}
+
+.item.ng-leave {
+	opacity: 1.0;
+}
+.item.ng-leave-active {
+	opacity: 0.0;
+}
+
+.item.ng-enter {
+	opacity: 0.0;
+}
+.item.ng-enter-active {
+	opacity: 1.0;
+}

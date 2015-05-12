@@ -1,0 +1,89 @@
+'use strict';
+
+angular.module('lesson11')
+
+.controller('MainCtrl', function ($scope, VALS, $log) {
+	$scope.awesomeThings = angular.copy(VALS);
+
+	$scope.refresh = function() {
+		$scope.awesomeThings = angular.copy(VALS);
+	}
+
+	$scope.delete = function(item) {
+		var index = $scope.awesomeThings.indexOf(item);
+		$scope.awesomeThings.splice(index, 1);
+	}
+	// $log.info('info log');
+	$log.debugTime('debug log');
+	$log.debugTime('debug log');
+	$log.debugTime('debug log');
+	// $log.error('error log');
+	// $log.log('log log' + angular.toJson({name: 'tom'}, true));
+})
+
+.provider('GlobalSettings', function() {
+	this.isDebug = false;
+
+	this.$get = function() {
+		return {
+			isDebug: this.isDebug
+		}
+	};
+})
+
+.value('VALS', [{
+        'title': 'AngularJS',
+        'url': 'https://angularjs.org/',
+        'description': 'HTML enhanced for web apps!',
+        'logo': 'angular.png'
+      },
+      {
+        'title': 'BrowserSync',
+        'url': 'http://browsersync.io/',
+        'description': 'Time-saving synchronised browser testing.',
+        'logo': 'browsersync.png'
+      },
+      {
+        'title': 'GulpJS',
+        'url': 'http://gulpjs.com/',
+        'description': 'The streaming build system.',
+        'logo': 'gulp.png'
+      },
+      {
+        'title': 'Jasmine',
+        'url': 'http://jasmine.github.io/',
+        'description': 'Behavior-Driven JavaScript.',
+        'logo': 'jasmine.png'
+      },
+      {
+        'title': 'Karma',
+        'url': 'http://karma-runner.github.io/',
+        'description': 'Spectacular Test Runner for JavaScript.',
+        'logo': 'karma.png'
+      },
+      {
+        'title': 'Protractor',
+        'url': 'https://github.com/angular/protractor',
+        'description': 'End to end test framework for AngularJS applications built on top of WebDriverJS.',
+        'logo': 'protractor.png'
+      },
+      {
+        'title': 'jQuery',
+        'url': 'http://jquery.com/',
+        'description': 'jQuery is a fast, small, and feature-rich JavaScript library.',
+        'logo': 'jquery.jpg'
+      },
+      {
+        'title': 'Bootstrap',
+        'url': 'http://getbootstrap.com/',
+        'description': 'Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.',
+        'logo': 'bootstrap.png'
+      },
+      {
+        'title': 'Angular UI Bootstrap',
+        'url': 'http://angular-ui.github.io/bootstrap/',
+        'description': 'Bootstrap components written in pure AngularJS by the AngularUI Team.',
+        'logo': 'ui-bootstrap.png'
+      }
+
+]);
