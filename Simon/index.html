@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="index.js"></script>
+  <title>Lesson02</title>
+
+  <style type="text/css">
+    .red {
+      	background-color: red;
+    }
+
+    .blue {
+      	background-color: blue;
+    }
+
+    .green {
+      	background-color: green;
+    }
+
+    .yellow {
+    	background-color: yellow;
+    }
+
+	.box {
+		width: 150px; 
+		height: 150px; 
+		display:inline-block; 
+		border:solid black 1px;
+	}
+
+  </style>
+</head>
+  <body ng-app="myApp">
+  <h3>Lesson02 - Angular Built-In Direcitves</h3>
+	  <div ng-controller="myController as ctrl">
+
+		<div>
+			<div class="box" 
+				 ng-mousedown="ctrl.highlightBox(ctrl.COLORS.kRed)"
+				 ng-mouseup="ctrl.deselectCurrent()"
+				 ng-class="ctrl.shouldHighlightBox(ctrl.COLORS.kRed, ctrl.currentSelection)">
+				
+
+			</div>
+			<div class="box" 
+				 ng-mousedown="ctrl.highlightBox(ctrl.COLORS.kBlue)"
+				 ng-mouseup="ctrl.deselectCurrent()"
+				 ng-class="ctrl.shouldHighlightBox(ctrl.COLORS.kBlue, ctrl.currentSelection)">
+				
+
+			</div>
+		</div>
+		<div>
+			<div class="box" 
+				 ng-mousedown="ctrl.highlightBox(ctrl.COLORS.kYellow)"
+				 ng-mouseup="ctrl.deselectCurrent()"
+				 ng-class="ctrl.shouldHighlightBox(ctrl.COLORS.kYellow, ctrl.currentSelection)">
+				
+
+			</div>
+			<div class="box" 
+				 ng-mousedown="ctrl.highlightBox(ctrl.COLORS.kGreen)"
+				 ng-mouseup="ctrl.deselectCurrent()"
+				 ng-class="ctrl.shouldHighlightBox(ctrl.COLORS.kGreen, ctrl.currentSelection)">
+				
+
+			</div>
+		</div>
+
+
+	  </div>
+  </body>
+</html>
+
+
