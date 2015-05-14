@@ -1,0 +1,10 @@
+<div style="width: 800px; height: 600px;">
+		<h3>This is my modal content</h3>
+
+		Select Address <input ng-model="ctrl.address" ng-change="ctrl.update(ctrl.address)">
+
+		<div style="width: 500px; height: 400px;" ng-grid="ctrl.gridOptions">
+
+		</div>
+	<button ng-click="ctrl.closeModal()">Close</button>
+</div>
